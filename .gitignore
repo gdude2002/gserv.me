@@ -1,7 +1,7 @@
-.idea
-.venv
+/.idea
+/.venv
+/static
 
 *.pyc
 *.pyo
-
 *.sqlite3

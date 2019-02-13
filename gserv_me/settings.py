@@ -32,12 +32,16 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+    'base.apps.BaseConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_simple_bulma',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +124,39 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_FINDERS = [
+  'django.contrib.staticfiles.finders.FileSystemFinder',
+  'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+  'django_simple_bulma.finders.SimpleBulmaFinder',
+]
+
+
+# Settings for django-simple-bulma
+
+BULMA_SETTINGS = {
+    "extensions": [
+        # Layout extensions
+        "bulma-divider",
+
+        # Form extensions
+        "bulma-checkradio",
+        "bulma-iconpicker",
+        "bulma-slider",
+        "bulma-switch",
+        "bulma-tagsinput",
+
+        # Element extensions
+        "bulma-badge",
+        "bulma-tooltip",
+
+        # Component extensions
+        "bulma-steps",
+
+        # Bundled extensions
+        "bulma-fileupload",
+        "bulma-navbar-burger",
+        "bulma-notifications",
+    ]
+}
