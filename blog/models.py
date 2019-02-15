@@ -1,20 +1,22 @@
+from django.contrib.auth.models import User
 from django.db import models
+
+from blog.constants import BlockType
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=200)
-    markdown = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     html = models.TextField()
+    title = models.CharField(max_length=200)
     pub_date = models.DateTimeField("date published")
 
     def __str__(self):
         return self.title
 
 
-class Comment(models.Model):
+class Block(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    text = models.CharField(max_length=1024)
-    username = models.CharField(max_length=64)
-
-    def __str__(self):
-        return f"@{self.username} | {self.text}"
+    type = models.IntegerField(
+        choices=[(t, t.value) for t in BlockType]
+    )
+    content = models.TextField()

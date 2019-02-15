@@ -11,7 +11,7 @@
 ## Blog
 
 * Front page
-* Post editor/creator
+* Post editor/creator - let's do blocks!
 * Tags
 * Modern layout, header images
 * Nice-to-have: reading time estimate, reading progress bar, table of contents
