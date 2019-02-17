@@ -7,6 +7,7 @@ from blog.constants import BlockType
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     html = models.TextField()
+    slug = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField("date published")
 
@@ -20,3 +21,4 @@ class Block(models.Model):
         choices=[(t, t.value) for t in BlockType]
     )
     content = models.TextField()
+    order = models.IntegerField()
