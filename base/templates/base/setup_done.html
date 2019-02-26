@@ -1,0 +1,37 @@
+{% extends "base/base.html" %}
+{% block title %}Setup{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block head %}
+    <meta http-equiv="refresh" content="5;url={% url "base.index" %}" />
+{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+
+            </div>
+            <div class="column">
+                <h1 class="title">
+                    Setup
+                </h1>
+                <p class="subtitle has-text-grey-light">
+                    Let's get this party started
+                </p>
+
+                <p>
+                    Your new site is ready to go! You'll be redirected in five
+                    seconds, but you can <a href="{% url "base.index" %}">click here</a>
+                    if you'd rather not wait.
+                </p>
+            </div>
+            <div class="column">
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

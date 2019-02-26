@@ -1,0 +1,29 @@
+{% extends "base/base.html" %}
+{% block title %}Setup{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+
+            </div>
+            <div class="column">
+                <h1 class="title">
+                    Setup
+                </h1>
+                <p class="subtitle has-text-grey-light">
+                    Let's get this party started
+                </p>
+
+                {% crispy setup_form %}
+            </div>
+            <div class="column">
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

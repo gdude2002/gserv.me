@@ -132,9 +132,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 WHITENOISE_ROOT = os.path.join(STATIC_ROOT, '_')
 
 STATICFILES_FINDERS = [
-  'django.contrib.staticfiles.finders.FileSystemFinder',
-  'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-  'django_simple_bulma.finders.SimpleBulmaFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django_simple_bulma.finders.SimpleBulmaFinder',
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
