@@ -10,7 +10,7 @@ class IndexView(View):
     def get(self, request):
         users = User.objects.filter(is_staff=True).count()
 
-        if users >= 0:
+        if users > 0:
             return redirect("base.index")
 
         return render(request, "base/setup.html", context={"setup_form": SetupForm()})
@@ -18,7 +18,7 @@ class IndexView(View):
     def post(self, request: HttpRequest):
         users = User.objects.filter(is_staff=True).count()
 
-        if users >= 0:
+        if users > 0:
             return redirect("base.index")
 
         form = SetupForm(request.POST)
