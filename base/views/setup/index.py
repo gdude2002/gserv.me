@@ -6,37 +6,45 @@ from django.views import View
 from base.forms.setup import SetupForm
 
 
+INDEX_URL = "base.index"
+
+SETUP_DONE_TEMPLATE = "base/setup_done.html"
+SETUP_TEMPLATE = "base/setup.html"
+
+
 class IndexView(View):
     def get(self, request):
-        users = User.objects.filter(is_staff=True).count()
+        users = User.objects.filter(is_superuser=True).count()
 
         if users > 0:
-            return redirect("base.index")
+            return redirect(INDEX_URL)
 
-        return render(request, "base/setup.html", context={"setup_form": SetupForm()})
+        return render(
+            request, SETUP_TEMPLATE,
+            context={
+                "setup_form": SetupForm()
+            }
+        )
 
     def post(self, request: HttpRequest):
-        users = User.objects.filter(is_staff=True).count()
+        users = User.objects.filter(is_superuser=True).count()
 
         if users > 0:
-            return redirect("base.index")
+            return redirect(INDEX_URL)
 
         form = SetupForm(request.POST)
 
         if not form.is_valid():
             return render(
-                request, "base/setup.html",
+                request, SETUP_TEMPLATE,
                 context={
                     "setup_form": form
                 }
             )
 
-        data = form.cleaned_data
-
-        user = User.objects.create_superuser(
-            data["username"], data["email"], data["password"]
-        )
-
+        user = User.objects.create_superuser(**form.cleaned_data)
         user.save()
 
-        return render(request, "base/setup_done.html")
+        return render(
+            request, SETUP_DONE_TEMPLATE
+        )
