@@ -3,6 +3,14 @@
 
 {% load crispy_forms_tags %}
 
+{% block head %}
+    <style>
+    .asterisk {
+        display: none;
+    }
+    </style>
+{% endblock %}
+
 {% block content %}
 <section class="section">
     <div class="container">
@@ -11,14 +19,18 @@
 
             </div>
             <div class="column">
-                <h1 class="title">
-                    Setup
-                </h1>
-                <p class="subtitle has-text-grey-light">
-                    Let's get this party started
-                </p>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content has-text-centered">
+                            <h1 class="title">
+                                Setup
+                            </h1>
+                            <p class="subtitle has-text-grey-light is-centered"> Let's get this party started</p>
 
-                {% crispy setup_form %}
+                            {% crispy setup_form %}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="column">
 

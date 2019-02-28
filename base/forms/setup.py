@@ -1,5 +1,6 @@
 from crispy_forms.helper import FormHelper
 from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.core.exceptions import ValidationError
 from django.forms import Form, CharField, PasswordInput
 from django_crispy_bulma.forms import EmailField
 
@@ -17,7 +18,7 @@ class SetupForm(Form):
         label="Username",
         max_length=150,
         required=True,
-        validators=(UnicodeUsernameValidator(), )
+        validators=(UnicodeUsernameValidator(), ),
     )
 
     email = EmailField(
@@ -30,3 +31,22 @@ class SetupForm(Form):
         required=True,
         widget=PasswordInput,
     )
+
+    confirm_password = CharField(
+        label="Password (Again)",
+        required=True,
+        widget=PasswordInput,
+    )
+
+    def clean_confirm_password(self):
+        password = self.cleaned_data.get("password")
+        confirm_password = self.cleaned_data.get("confirm_password")
+        print(password, confirm_password)
+        print(password == confirm_password)
+
+        if password != confirm_password:
+            self.add_error("password", ValidationError("Passwords must match"))
+            self.add_error("confirm_password", ValidationError("Passwords must match"))
+
+    def _post_clean(self):
+        del self.cleaned_data["confirm_password"]
