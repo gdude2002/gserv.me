@@ -25,7 +25,10 @@ SECRET_KEY = 'oa(hiynkjl^p4mz-x+*+6tg5!)a_j6f8ec&ft63s)6h*kq$j#e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+if DEBUG:
+    SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.2.20"]
 
 
 # Application definition
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'captcha',
     'crispy_forms',
 
     'django_crispy_bulma',
@@ -178,5 +182,19 @@ BULMA_SETTINGS = {
         "bulma-fileupload",
         "bulma-navbar-burger",
         "bulma-notifications",
-    ]
+    ],
+    "variables": {
+        "primary": "#7289DA",
+
+        "navbar-padding-vertical": "0",
+
+        "navbar-background-color": "#7289DA",
+        "navbar-item-color": "#C7D0F2",
+
+        "navbar-item-hover-color": "#C7D0F2",
+        "navbar-item-hover-background-color": "#647BCE",
+
+        "navbar-item-active-color": "#C7D0F2",
+        "navbar-item-active-background-color": "#647BCE",
+    }
 }
