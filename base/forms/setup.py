@@ -2,7 +2,7 @@ from crispy_forms.helper import FormHelper
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.core.exceptions import ValidationError
 from django.forms import Form, CharField, PasswordInput
-from django_crispy_bulma.forms import EmailField
+# from django_crispy_bulma.forms import EmailField
 
 from django_crispy_bulma.layout import Submit
 
@@ -21,10 +21,10 @@ class SetupForm(Form):
         validators=(UnicodeUsernameValidator(), ),
     )
 
-    email = EmailField(
-        label="Email",
-        required=True,
-    )
+    # email = EmailField(
+    #     label="Email",
+    #     required=True,
+    # )
 
     password = CharField(
         label="Password",
