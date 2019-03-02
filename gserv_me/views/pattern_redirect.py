@@ -33,5 +33,3 @@ class PatternRedirectView(RedirectView):
             return url
 
         return super().get_redirect_url(*args, **kwargs)
-
-
