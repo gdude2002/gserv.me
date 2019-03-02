@@ -5,11 +5,51 @@
 <section class="section">
     <div class="container">
         <h1 class="title">
-            Hello World
+            Blog
         </h1>
-        <p class="subtitle">
-            My first website with <strong>Bulma</strong>!
+        <p class="subtitle has-text-grey-light">
+            Keeping up to date
         </p>
+        {% if not posts %}
+            <p>No posts found. Watch this space!</p>
+        {% else %}
+            {% include "fragments/paginator.html" with page=posts only %}
+            <br />
+
+            {% for post in posts %}
+{#                <pre>#}
+{#Author: {{ post.author }}#}
+{#Category: {{ post.category }}#}
+{#HTML: {{ post.html }}#}
+{#Markdown: {{ post.markdown }}#}
+{#Slug: {{ post.slug }}#}
+{#Title: {{ post.title }}#}
+{#Pub date: {{ post.pub_date }}#}
+{#</pre>#}
+                <h2 class="title">
+                    <a href="{{ post.slug }}">{{ post.title }}</a>
+                </h2>
+
+                <p class="subtitle">
+                    {{ post.pub_date | date:"jS E, Y" }}
+                    <a class="is-pulled-right" href="" title="Category: {{ post.category }}">
+                        <span class="icon"><i class="fas fa-list"></i></span>
+                        {{ post.category }}
+                    </a>
+                </p>
+
+                <article class="content">
+                    {{ post.html | safe }}
+                </article>
+
+                {% if not forloop.last and posts.count %}
+                    <div class="is-divider"></div>
+                {% endif %}
+            {% endfor %}
+
+            <br />
+            {% include "fragments/paginator.html" with page=posts only %}
+        {% endif %}
     </div>
 </section>
 {% endblock %}
