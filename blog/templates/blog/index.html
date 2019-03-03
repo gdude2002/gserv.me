@@ -1,4 +1,4 @@
-{% extends "blog/base.html" %}
+{% extends "base/base.html" %}
 {% block title %}Blog{% endblock %}
 
 {% block content %}
@@ -33,7 +33,7 @@
                 <p class="subtitle">
                     {{ post.pub_date | date:"jS E, Y" }}
                     <a class="is-pulled-right" href="" title="Category: {{ post.category }}">
-                        <span class="icon"><i class="fas fa-list"></i></span>
+                        <span class="icon"><i class="fal fa-tag"></i></span>
                         {{ post.category }}
                     </a>
                 </p>

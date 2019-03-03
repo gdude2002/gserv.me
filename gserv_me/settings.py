@@ -183,29 +183,9 @@ BULMA_SETTINGS = {
         "bulma-navbar-burger",
         "bulma-notifications",
     ],
+
     "variables": {
         "primary": "#7289DA",
-
-        # "navbar-padding-vertical": "0",
-        #
-        # "navbar-background-color": "#7289DA",
-        # "navbar-item-color": "#C7D0F2",
-        #
-        # "navbar-item-hover-color": "#C7D0F2",
-        # "navbar-item-hover-background-color": "#647BCE",
-        #
-        # "navbar-item-active-color": "#C7D0F2",
-        # "navbar-item-active-background-color": "#647BCE",
-
-        "navbar-padding-vertical": "0",
-
-        "navbar-background-color": "#7289DA",
-        "navbar-item-color": "#C7D0F2",
-
-        "navbar-item-hover-color": "#C7D0F2",
-        "navbar-item-hover-background-color": "rgba(0, 0, 0, 0.1)",
-
-        "navbar-item-active-color": "#C7D0F2",
-        "navbar-item-active-background-color": "rgba(0, 0, 0, 0.2)",
+        "link": "$primary",
     }
 }
