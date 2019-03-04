@@ -1,5 +1,5 @@
 {% extends "base/base.html" %}
-{% block title %}Blog{% endblock %}
+{% block title %}Blog | Posts{% endblock %}
 
 {% block content %}
 <section class="section">
@@ -8,14 +8,23 @@
             <h1 class="title">No posts found</h1>
             <p class="subtitle has-text-grey-light">Watch this space!</p>
         {% else %}
-{#            {% if category %}#}
-{#                <div>#}
-{#                    <a class="is-pulled-right" title="Category: {{ category.name }}">#}
-{#                        <span class="icon"><i class="fal fa-tag"></i></span>#}
-{#                        {{ category.name }}#}
-{#                    </a>#}
-{#                </div>#}
-{#            {% endif %}#}
+            {% if category %}
+                <h1 class="title">
+                    Category: {{ category.name }}
+                </h1>
+                <p class="subtitle has-text-grey-light">
+                    <span class="icon"><i class="fal fa-list"></i></span>
+                    &nbsp; {{ category.post_count }} post{{ category.post_count|pluralize }}
+                </p>
+            {% else %}
+                <h1 class="title">
+                    All posts
+                </h1>
+                <p class="subtitle has-text-grey-light">
+                    <span class="icon"><i class="fal fa-list"></i></span>
+                    &nbsp; {{ post_count }} post{{ post_count|pluralize }}
+                </p>
+            {% endif %}
 
             {% include "fragments/paginator.html" with page=posts only %}
             <br />
@@ -27,7 +36,7 @@
 
                 <p class="subtitle">
                     {{ post.pub_date | date:"jS E, Y" }}
-                    <a class="is-pulled-right" href="" title="Category: {{ post.category }}">
+                    <a class="is-pulled-right" href="{% url "blog.category" slug=post.category.slug page=1 %}" title="Category: {{ post.category }}">
                         <span class="icon"><i class="fal fa-tag"></i></span>
                         {{ post.category }}
                     </a>

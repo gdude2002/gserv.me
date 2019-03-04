@@ -10,7 +10,7 @@
 
             <p class="subtitle">
                 {{ post.pub_date | date:"jS E, Y" }}
-                <a class="is-pulled-right" href="" title="Category: {{ post.category }}">
+                <a class="is-pulled-right" href="{% url "blog.category" slug=post.category.slug page=1 %}" title="Category: {{ post.category }}">
                     <span class="icon"><i class="fal fa-tag"></i></span>
                     {{ post.category }}
                 </a>

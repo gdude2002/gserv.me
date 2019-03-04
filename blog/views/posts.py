@@ -12,5 +12,5 @@ class PostsView(View):
 
         return render(
             request, "blog/index.html",
-            context={"posts": pages.get_page(page)}
+            context={"posts": pages.get_page(page), "post_count": posts.count()}
         )

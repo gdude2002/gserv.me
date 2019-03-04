@@ -15,7 +15,7 @@
                 {% for category in categories %}
                 <div class="column is-4">
                     <div class="card">
-                        <a class="card-header">
+                        <a class="card-header" href="{% url "blog.category" slug=category.slug page=1 %}">
                             <p class="card-header-title has-text-primary">
                                 {{ category.name }}
                             </p>
@@ -33,9 +33,9 @@
                         {% endif %}
 
                         <footer class="card-footer">
-                            <p class="card-footer-item has-text-primary">
+                            <a class="card-footer-item" href="{% url "blog.category" slug=category.slug page=1 %}">
                                 {{ category.post_count }} post{{ category.post_count|pluralize }}
-                            </p>
+                            </a>
                         </footer>
                     </div>
                 </div>
