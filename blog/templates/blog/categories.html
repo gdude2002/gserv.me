@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+{% block title %}Blog | Categories{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        {% if not categories %}
+            <h1 class="title">No categories found</h1>
+            <p class="subtitle has-text-grey-light">Watch this space!</p>
+        {% else %}
+            <h1 class="title">
+            Categories
+            </h1>
+            <div class="columns">
+                {% for category in categories %}
+                <div class="column is-4">
+                    <div class="card">
+                        <a class="card-header">
+                            <p class="card-header-title has-text-primary">
+                                {{ category.name }}
+                            </p>
+                            <span class="card-header-icon" aria-label="icon">
+                                <span class="icon"><i class="fal fa-link"></i></span>
+                            </span>
+                        </a>
+
+                        {% if category.description %}
+                            <div class="card-content">
+                                <div class="content">
+                                    {{ category.description }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <footer class="card-footer">
+                            <p class="card-footer-item has-text-primary">
+                                {{ category.post_count }} post{{ category.post_count|pluralize }}
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="columns">
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

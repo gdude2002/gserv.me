@@ -8,6 +8,15 @@
             <h1 class="title">No posts found</h1>
             <p class="subtitle has-text-grey-light">Watch this space!</p>
         {% else %}
+{#            {% if category %}#}
+{#                <div>#}
+{#                    <a class="is-pulled-right" title="Category: {{ category.name }}">#}
+{#                        <span class="icon"><i class="fal fa-tag"></i></span>#}
+{#                        {{ category.name }}#}
+{#                    </a>#}
+{#                </div>#}
+{#            {% endif %}#}
+
             {% include "fragments/paginator.html" with page=posts only %}
             <br />
 

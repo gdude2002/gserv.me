@@ -7,7 +7,7 @@ from blog.models import Post
 
 class PostsView(View):
     def get(self, request, page: int):
-        posts = Post.objects.order_by("-pub_date")  # Latest 10 posts
+        posts = Post.objects.order_by("-pub_date")
         pages = Paginator(posts, per_page=10)
 
         return render(
