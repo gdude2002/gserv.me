@@ -4,30 +4,16 @@
 {% block content %}
 <section class="section">
     <div class="container">
-        <h1 class="title">
-            Blog
-        </h1>
-        <p class="subtitle has-text-grey-light">
-            Keeping up to date
-        </p>
         {% if not posts %}
-            <p>No posts found. Watch this space!</p>
+            <h1 class="title">No posts found</h1>
+            <p class="subtitle has-text-grey-light">Watch this space!</p>
         {% else %}
             {% include "fragments/paginator.html" with page=posts only %}
             <br />
 
             {% for post in posts %}
-{#                <pre>#}
-{#Author: {{ post.author }}#}
-{#Category: {{ post.category }}#}
-{#HTML: {{ post.html }}#}
-{#Markdown: {{ post.markdown }}#}
-{#Slug: {{ post.slug }}#}
-{#Title: {{ post.title }}#}
-{#Pub date: {{ post.pub_date }}#}
-{#</pre>#}
                 <h2 class="title">
-                    <a href="{{ post.slug }}">{{ post.title }}</a>
+                    <a href="{% url "blog.post" slug=post.slug %}">{{ post.title }}</a>
                 </h2>
 
                 <p class="subtitle">

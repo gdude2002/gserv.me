@@ -1,0 +1,24 @@
+{% extends "base/base.html" %}
+{% block title %}Blog | {{ post.title }}{% endblock %}
+
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <h2 class="title">
+                <a href="{% url "blog.post" slug=post.slug %}">{{ post.title }}</a>
+            </h2>
+
+            <p class="subtitle">
+                {{ post.pub_date | date:"jS E, Y" }}
+                <a class="is-pulled-right" href="" title="Category: {{ post.category }}">
+                    <span class="icon"><i class="fal fa-tag"></i></span>
+                    {{ post.category }}
+                </a>
+            </p>
+
+            <article class="content">
+                {{ post.html | safe }}
+            </article>
+        </div>
+    </section>
+{% endblock %}
