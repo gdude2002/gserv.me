@@ -5,6 +5,7 @@ from django.utils import timezone
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    description = models.CharField(max_length=256, default="")
     slug = models.SlugField(max_length=100)
 
     class Meta:
