@@ -9,7 +9,7 @@ from blog.models import Category
 class CategoryView(View):
     def get(self, request, slug: str, page: int):
         category = Category.objects.annotate(post_count=Count("post")).get(slug=slug)
-        pages = Paginator(category.post_set.all(), per_page=10)
+        pages = Paginator(category.post_set.order_by("-pub_date").all(), per_page=10)
 
         return render(
             request, "blog/index.html",

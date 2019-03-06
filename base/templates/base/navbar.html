@@ -62,6 +62,13 @@ For example, to use light icons and no dropdowns, you could use the following in
                 </div>
                 <div class="navbar-end">
                     {% if request.user.is_authenticated %}
+                        {% if user.is_staff %}
+                            <a class="navbar-item" href="{% url "admin:index" %}">
+                                <span class="icon is-size-4 is-medium"><i class="{{ icon_weight }} fa-cog"></i></span>
+                                <span>&nbsp;Admin</span>
+                            </a>
+                        {% endif %}
+
                         <a class="navbar-item" href="{% url "logout" %}">
                             <span class="icon is-size-4 is-medium"><i class="{{ icon_weight }} fa-unlock"></i></span>
                             <span>&nbsp;Logout</span>
