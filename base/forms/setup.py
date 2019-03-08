@@ -1,18 +1,26 @@
 from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.core.exceptions import ValidationError
 from django.forms import Form, CharField, PasswordInput
 from django_crispy_bulma.forms import EmailField
 
-from django_crispy_bulma.layout import Submit
+from django_crispy_bulma.layout import Submit, IconField
 
 
 class SetupForm(Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
         self.helper = FormHelper(self)
 
-        self.helper.add_input(Submit("submit", "Submit", css_class="is-fullwidth"))
+        self.helper.layout = Layout(
+            IconField("username", icon_prepend="user", title="Username"),
+            IconField("email", icon_prepend="at", title="Email"),
+            IconField("password", icon_prepend="key", title="Password"),
+            IconField("confirm_password", icon_prepend="key", title="Password (Again)"),
+            Submit("submit", "Submit", css_class="is-fullwidth")
+        )
 
     username = CharField(
         label="Username",
