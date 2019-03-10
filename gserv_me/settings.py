@@ -25,9 +25,6 @@ SECRET_KEY = 'oa(hiynkjl^p4mz-x+*+6tg5!)a_j6f8ec&ft63s)6h*kq$j#e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEBUG" in os.environ
 
-if DEBUG:
-    SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
-
 ALLOWED_HOSTS = ["127.0.0.1", "192.168.2.20"]
 
 
@@ -64,7 +61,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # 'captcha',
     'crispy_forms',
 
     'django_crispy_bulma',
