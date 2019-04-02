@@ -16,7 +16,7 @@ class SetupForm(Form):
 
         self.helper.layout = Layout(
             IconField("username", icon_prepend="user", title="Username"),
-            IconField("email", icon_prepend="at", title="Email"),
+            IconField("email", icon_prepend="envelope", title="Email"),
             IconField("password", icon_prepend="key", title="Password"),
             IconField("confirm_password", icon_prepend="key", title="Password (Again)"),
             Submit("submit", "Submit", css_class="is-fullwidth")
